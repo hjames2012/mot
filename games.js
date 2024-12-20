@@ -30,12 +30,12 @@ function loadGames(data) {
 				id: data[i].directory,
 				recommended: data[i].recommended,
 				// href: "loader.html#" + btoa(encodeURIComponent(JSON.stringify([data[i].directory, data[i].image, data[i].name]))),
-				href: "semag/" + data[i].directory + "/index.html",
+				href: "" + data[i].directory + "/index.html",
 			})
 			.data("recommended", data[i].recommended)
 			.append(
 				$("<img>").prop({
-					src: "semag/" + data[i].directory + "/" + data[i].image,
+					src: "/" + data[i].directory + "/" + data[i].image,
 					alt: data[i].name + " logo",
 					loading: "lazy"
 				})
