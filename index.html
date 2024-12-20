@@ -33,59 +33,43 @@
 	</head>
 	<alerts>
 		<div id="toast"></div>
-		<script>
-			$.getJSON("data/changelog.json", (data) => {
-				if (localStorage.getItem("selenite.version") != data.version) {
-					toast({ title: "New Update!", message: data.desc, time: data.timestamp });
-					localStorage.setItem("selenite.version", data.version);
-				}
-			});
-		</script>
-	</alerts>
-	<body>
-		<header>
-			<a href="/index.html">Home</a>
-			<a href="/bookmarklets.html">Bookmarklets</a>
-			<a href="/projects.html">Games</a>
-			<a href="/apps.html">Apps</a>
-			<a href="/settings.html">Settings</a>
-			<a id="blank" href="#">Open Blank</a>
-      <a href="/u/" class="usericon"><img src="/img/user.svg"></a>
+		<style>
+		/* Add a black background color to the top navigation */
+		.topnav {
+			background-color: #333;
+			overflow: hidden;
+		}
 
-		</header>
-		<main>
-			<h3 id="popunder" style="display: none;">You may be redirected upon clicking on the screen. This is an ad. <a style="font-size: inherit;" href="ad.html">Learn more.</a></h3>
-			<input class="hiddenUpload" type="file" accept=".save" hidden />
+		/* Style the links inside the navigation bar */
+		.topnav a {
+			float: left;
+			color: #f2f2f2;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-size: 17px;
+		}
 
-			<input type="text" class="searchbar" id="gamesearch" placeholder="Type here to search.." />
-			<div class="samerow">
-				<sl-tooltip content="Remember to download your save, so you don't lose your progress." trigger="manual" class="manual-tooltip">
-					<button onclick="downloadMainSave()">Download Save</button>
-				</sl-tooltip>
-				<button id="upload" onclick="uploadMainSave()">Upload Save</button>
-			</div>
-			<div class="samerow">
-				<button id="random" onclick="selectRandomGame()">Play a random game!</button>
-				<button id="category" onclick="categoryChanger()">Game Categories</button>
-			</div>
+		/* Change the color of links on hover */
+		.topnav a:hover {
+			background-color: #ddd;
+			color: black;
+		}
 
-			<h2>Starred Games</h2>
-			<p id="pinnedmessage">Star some games for things to show up here!</p>
-			<div id="pinned"></div>
-
-			<h2>All Games</h2>
-			<div id="games">
-				<a href="/suggest.html"
-					><div class="suggest">
-						<img src="img/addlink.svg" alt="Add Game logo" style="filter: invert(1) !important" />
-						<h1>Suggest a game!</h1>
-					</div></a
-				>
-				<p id="message">games loading..</p>
-				<p id="message">games not loading? click ctrl + shift + r</p>
-				<button id="message" onclick='$.getJSON("/data/games.json", function (data) {loadGames(data)})'>Games not loading? Click here.</button>
-			</div>
-			<br />
+		/* Add a color to the active/current link */
+		.topnav a.active {
+			background-color: #04AA6D;
+			color: white;
+		}
+        h3
+{
+ color: white;   
+}
+	</style>
+<a href="geometrydash.html">
+            <div class="game" style="cursor: pointer;" id="gba" recommended="1"><img width="100px" heght="200px" src="holeiothumbnail.png" alt="GBA Emulator logo"></a>
+            <h3>Geometry Dash</h3>
+            </div>
 		</main>
 
 		<footer>
