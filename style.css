@@ -71,11 +71,6 @@ topnav {
     box-shadow: 0 5px 10px var(--uibg);
 }
 
-footer.noscroll {
-    position: fixed;
-    overflow: hidden;
-}
-
 footer {
     bottom: 0;
     border-radius: 20px 20px 0 0;
