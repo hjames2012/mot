@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Lines Background</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            position: relative; /* Allows absolute positioning of children */
+        }
+
+        .line {
+            position: absolute;
+            height: 4px; /* Increased height for better visibility */
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            opacity: 0.8;
+            animation: dance 2s infinite alternate;
+            z-index: 1; /* Lower z-index to keep it behind other content */
+        }
+
+        @keyframes dance {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-50px) rotate(360deg); /* Adjusted movement */
+            }
+        }
+
+        /* Example content to show above the neon lines */
+        .content {
+            position: relative;
+            z-index: 2; /* Higher z-index to keep it above the lines */
+            color: white;
+            text-align: center;
+            margin-top: 20%;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">Welcome to the Neon Dance!</div>
+
+    <script>
+        const numberOfLines = 20; // Number of neon lines
+        const lines = [];
+
+        for (let i = 0; i < numberOfLines; i++) {
+            const line = document.createElement('div');
+            line.className = 'line';
+            line.style.width = Math.random() * 100 + 'vw'; // Random width
+            line.style.top = Math.random() * 100 + 'vh'; // Random vertical position
+            line.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            line.style.animationDuration = (Math.random() * 3 + 1) + 's'; // Random animation duration
+            document.body.appendChild(line);
+            lines.push(line);
+        }
+    </script>
+</body>
+</html>
