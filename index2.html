@@ -1,456 +1,67 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classroom</title>
-    <style>
-        :root {
-            --primary-color: #ff00ff;
-            --secondary-color: #667eea;
-        }
+<html class="sl-theme-dark" lang="en">
+	<head>
+		<!-- initialize theme vars
+    https://coolors.co/10002b-240046-3c096c-5a189a-7b2cbf-9d4edd-c77dff-e0aaff -->
 
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #240046;
-            overflow: scroll;
-        }
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+		<script src=" https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+		<!-- initialize my stuff -->
+		<script src="https://motknv.on-fleek.app/js/all.min.js"></script>
+		<script src="games.js"></script>
+		<script src="search.js"></script>
+		<script src="main.js"></script>
+		<script src="widget.js"></script>
+		<script src="themes.js"></script>
+		<script src="cookie.js"></script>
 
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            opacity: 0.6;
-            mix-blend-mode: overlay;
-            pointer-events: none;
-        }
+		
+		<link rel="stylesheet" href="/style.css" />
+		
 
-        .container {
-            max-width: 600px;
-            width: 100%;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            z-index: 1;
-            position: relative;
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
-        }
+		<!-- seo + other things -->
+		<title>Classroom</title>
+		<link rel="icon" href="/favicon.ico" />
 
-        .profile {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .profile img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid var(--primary-color);
-            object-fit: cover;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .profile img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--primary-color);
-        }
-
-        .profile h1 {
-            color: white;
-            margin: 10px 0;
-            text-shadow: 0 0 10px var(--primary-color);
-        }
-
-        .profile p {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .link {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-align: center;
-            border: 1px solid var(--primary-color);
-        }
-
-        .link:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 15px var(--primary-color);
-        }
-
-        .user-status {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            gap: 10px;
-            z-index: 1000;
-        }
-
-        .login-link {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-
-        .logout-btn {
-            background: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 5px 15px;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .logout-btn:hover {
-            background: var(--primary-color);
-        }
-
-        /* Add these awesome styles to your existing CSS */
-.music-button {
-    position: relative;
-    display: inline-block;
-    padding: 15px 30px;
-    margin: 20px 0;
-    background: linear-gradient(45deg, #ff00ff, #00ffff);
-    border-radius: 25px;
-    color: white;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.button-content {
-    position: relative;
-    z-index: 1;
-}
-
-.button-glow {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-    transform: rotate(0deg);
-    animation: rotate-glow 3s linear infinite;
-}
-
-@keyframes rotate-glow {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.music-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
-}
-
-.music-button:active {
-    transform: scale(0.95);
-}
-
-    </style>
-</head>
-<body>
-    <div class="user-status" id="userStatus"></div>
-    <canvas id="synthCanvas"></canvas>
-    <div class="container">
-        <div class="profile">
-            <img alt="Profile Picture" onclick="promptForNewImage()" onerror="this.onerror=null;">
-            <h1 id="userName">Welcome!</h1>
-            <p>Classwork</p>
-        </div>
-        
-        <div class="links">
-            <a href="music-player.html" class="music-button">
-                <span class="button-content">Play Some Music</span>
-                <div class="button-glow"></div>
-            </a>
-            <a href="#" class="link">Website</a>
-            <a href="#" class="link">LinkedIn</a>
-            <a href="#" class="link">GitHub</a>
-            <a href="#" class="link">Twitter</a>
-            <a href="#" class="link">Instagram</a>
-            <a href="#" class="link">YouTube</a>
-        </div>
-    </div>
-
-    <script>
-        // Login Management
-        function checkLoginStatus() {
-            const userStatus = document.getElementById('userStatus');
-            const userNameElement = document.getElementById('userName');
-            const user = localStorage.getItem('user');
-
-            if (user) {
-                const userData = JSON.parse(user);
-                userStatus.innerHTML = `
-                    Welcome, ${userData.name}! 
-                    <button class="logout-btn" onclick="logout()">Logout</button>
-                `;
-                userNameElement.textContent = userData.name;
-            } else {
-                userStatus.innerHTML = `
-                    <a href="login.html" class="login-link">Login / Sign Up</a>
-                `;
-                userNameElement.textContent = 'Welcome!';
-            }
-        }
-
-        function logout() {
-            localStorage.removeItem('user');
-            window.location.reload();
-        }
-
-        // Profile Image Management
-        function checkAndSetProfileImage() {
-            const profileImg = document.querySelector('.profile img');
-            const savedImage = localStorage.getItem('profileImage');
-            
-            if (savedImage) {
-                profileImg.src = savedImage;
-            } else {
-                profileImg.src = 'https://via.placeholder.com/150';
-            }
-        }
-
-        function promptForNewImage() {
-            const imageUrl = prompt("Enter the URL of your profile picture:", "");
-            if (imageUrl) {
-                const profileImg = document.querySelector('.profile img');
-                localStorage.setItem('profileImage', imageUrl);
-                profileImg.src = imageUrl;
-            }
-        }
-
-        // Enhanced DancingWave Class
-        class DancingWave {
-            constructor(index) {
-                this.index = index;
-                this.points = [];
-                this.numPoints = 12;
-                this.spacing = canvas.width / (this.numPoints - 1);
-                this.baseY = canvas.height * (index / numWaves);
-                this.amplitude = 100 + index * 30;
-                this.speed = 0.015 + (index * 0.003);
-                this.init();
-            }
-
-            init() {
-                for (let i = 0; i < this.numPoints; i++) {
-                    this.points.push({
-                        x: i * this.spacing,
-                        y: this.baseY,
-                        angle: (i / this.numPoints) * Math.PI * 2,
-                        individualSpeed: this.speed * (1 + Math.random() * 0.5)
-                    });
-                }
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.moveTo(0, canvas.height);
-
-                ctx.lineTo(this.points[0].x, this.points[0].y);
-                for (let i = 0; i < this.points.length - 1; i++) {
-                    const xc = (this.points[i].x + this.points[i + 1].x) / 2;
-                    const yc = (this.points[i].y + this.points[i + 1].y) / 2;
-                    ctx.quadraticCurveTo(this.points[i].x, this.points[i].y, xc, yc);
-                }
-                ctx.lineTo(canvas.width, canvas.height);
-
-                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-                gradient.addColorStop(0, `rgba(255, 0, 255, ${0.2 - this.index * 0.03})`);
-                gradient.addColorStop(1, `rgba(0, 255, 255, ${0.15 - this.index * 0.02})`);
-                
-                ctx.fillStyle = gradient;
-                ctx.fill();
-            }
-
-            update() {
-                this.points.forEach((point, i) => {
-                    point.angle += point.individualSpeed;
-                    point.y = this.baseY + Math.sin(point.angle) * this.amplitude;
-                });
-            }
-        }
-
-        class Line {
-            constructor(y) {
-                this.y = y;
-                this.offset = 0;
-                this.speed = 0.5 + Math.random() * 1;
-                this.amplitude = 30 + Math.random() * 20;
-                this.color = 'rgba(255, 0, 255, 0.5)';
-                this.width = 2 + Math.random() * 2;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.moveTo(0, this.y);
-                
-                for(let x = 0; x < canvas.width; x++) {
-                    const wave = Math.sin(x * 0.01 + this.offset) * this.amplitude;
-                    ctx.lineTo(x, this.y + wave);
-                }
-
-                ctx.strokeStyle = this.color;
-                ctx.lineWidth = this.width;
-                ctx.stroke();
-            }
-
-            update() {
-                this.offset += this.speed * 0.05;
-            }
-        }
-
-        class RandomLine {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.length = 50 + Math.random() * 100;
-                this.angle = Math.random() * Math.PI * 2;
-                this.speed = 1 + Math.random() * 3;
-                this.color = `rgba(255, ${Math.floor(Math.random() * 100)}, 255, ${0.1 + Math.random() * 0.4})`;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.moveTo(this.x, this.y);
-                const endX = this.x + Math.cos(this.angle) * this.length;
-                const endY = this.y + Math.sin(this.angle) * this.length;
-                ctx.lineTo(endX, endY);
-                ctx.strokeStyle = this.color;
-                ctx.lineWidth = 2;
-                ctx.stroke();
-            }
-
-            update() {
-                this.x += this.speed;
-                this.y += this.speed;
-
-                if (this.x > canvas.width && this.y > canvas.height) {
-                    this.reset();
-                }
-            }
-        }
-
-        // Canvas Setup and Animation
-        const canvas = document.getElementById('synthCanvas');
-        const ctx = canvas.getContext('2d');
-        const lines = [];
-        const randomLines = [];
-        const dancingWaves = [];
-        const lineCount = 20;
-        const randomLineCount = 50;
-        const numWaves = 8;
-
-        function init() {
-            resizeCanvas();
-            initLines();
-            checkLoginStatus();
-            checkAndSetProfileImage();
-            animate();
-        }
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        function initLines() {
-            lines.length = 0;
-            randomLines.length = 0;
-            dancingWaves.length = 0;
-            
-            // Initialize dancing waves first
-            for(let i = 0; i < numWaves; i++) {
-                dancingWaves.push(new DancingWave(i));
-            }
-
-            const spacing = canvas.height / lineCount;
-            
-            // Initialize regular wave lines
-            for(let i = 0; i < lineCount; i++) {
-                lines.push(new Line(spacing * i));
-            }
-            
-            // Initialize random lines
-            for(let i = 0; i < randomLineCount; i++) {
-                randomLines.push(new RandomLine());
-            }
-        }
-
-        function animate() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Draw dancing waves first (background)
-            dancingWaves.forEach(wave => {
-                wave.update();
-                wave.draw();
-            });
-
-            // Draw regular wave lines
-            lines.forEach(line => {
-                line.draw();
-                line.update();
-            });
-
-            // Draw random lines (foreground)
-            randomLines.forEach(line => {
-                line.draw();
-                line.update();
-            });
-
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initLines();
-        });
-
-        // Initialize everything
-        init();
-    </script>
-</body>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+	</head>
+			<header>
+			<a href="/index.html">Home</a>
+			<a href="/bookmarklets.html">Bookmarklets</a>
+			<a href="/projects.html">Games</a>
+			<a href="/apps.html">Apps</a>
+			<a href="/settings.html">Settings</a>
+			<a id="blank" href="#">Open Blank</a>
+			<a href="/u/" class="usericon"><img src="/img/user.svg" /></a>
+		</header>
+	<div id="main">
+		<div width="100px" height="100px">
+<a href="geometrydash.html">
+            <div class="game" style="cursor: pointer;" id="gba" recommended="1"><img width="10%" heght="10%" src="https://motknv.on-fleek.app/img/geometrylogo.png" alt="GBA Emulator logo"></a>
+            <h3>Geometry Dash</h3>
+            </div>
+	</div>
+</div>
+		<footer>
+			<a href="https://gitlab.com/skysthelimit.dev/selenite">Source</a>
+			<a href="https://discord.gg/7jyufnwJNf">Discord</a>
+			<a href="/suggest.html">Suggestions & Bugs</a>
+			<a href="/contact.html">Contact</a>
+			<a href="/support.html">Donate</a>
+			<a href="/about.html">About</a>
+		</footer>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const adContainers = document.querySelectorAll("[id=adcontainer]");
+				if (adContainers.length > 0) {
+					for (let i = 0; i < adContainers.length; i++) {
+						if (Math.random() < 0.5 && localStorage.getItem("selenite.adblock") != "true") {
+							adContainers[i].innerHTML = "";
+						}
+					}
+				}
+			});
+		</script>
+	</body>
 </html>
