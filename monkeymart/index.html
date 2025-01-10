@@ -144,7 +144,7 @@
   }
 
 	</style> 
-<script src="./poki-sdk.js"></script>
+<script src="https://gitlab.com/skysthelimit.dev/selenite/-/blob/main/semag/monkeymart/poki-sdk.js"></script>
 </head> 
  <body> 
   <div id="app-container" class="canvas-app-container" style="width: 640px; height: 360px;"> 
@@ -156,15 +156,15 @@
    <!-- center and anchor to bottom of page --> 
    <div id="progress-bar-root" style="position: absolute; bottom: 29px; left: 50%; visibility: visible; z-index: 4;"> 
     <!-- <div id="progress-bar-text"> --> 
-    <img id="progress-bar-bg" src="load_bar_bg.png" width="270" style="margin-left: -135px;"> 
-    <img id="progress-bar-fg" src="load_bar_fg.png" style="position: absolute; clip: rect(0px, 137.942px, 22px, 0px); margin-top: 0px; margin-left: -270px;" width="270"> 
+    <img id="progress-bar-bg" src="https://gitlab.com/skysthelimit.dev/selenite/-/blob/main/semag/monkeymart/load_bar_bg.png" width="270" style="margin-left: -135px;"> 
+    <img id="progress-bar-fg" src="https://gitlab.com/skysthelimit.dev/selenite/-/blob/main/semag/monkeymart/load_bar_fg.png" style="position: absolute; clip: rect(0px, 137.942px, 22px, 0px); margin-top: 0px; margin-left: -270px;" width="270"> 
    </div> 
   </div> 
   <!-- --> 
   <!-- <div id="bannerTop" class="banner-styleTop"></div> --> 
   <!-- <div id="bannerBottom" class="banner-styleBottom"></div> --> 
   <!-- --> 
-  <script id="engine-loader" type="text/javascript" src="dmloader.js"></script> 
+  <script id="engine-loader" type="text/javascript" src="https://gitlab.com/skysthelimit.dev/selenite/-/blob/main/semag/monkeymart/dmloader.js"></script> 
   <!-- --> 
   <script id="engine-setup" type="text/javascript">
 	var extra_params = {
@@ -188,10 +188,14 @@
 		// dmengine*.wasm is hardcoded in the built JS loader for WASM,
 		// we need to replace it here with the correct project name.
 		if (path == "dmengine.wasm" || path == "dmengine_release.wasm" || path == "dmengine_headless.wasm") {
-			path = "MonkeyMart.wasm";
+			path = "https://gitlab.com/skysthelimit.dev/selenite/-/tree/main/semag/monkeymart/MonkeyMart.wasm";
 		}
 		return scriptDirectory + path;
 	};
+	 
+    // Return the modified path (which is now a URL)
+    return path;
+};
 
 	var is_iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 	var buttonHeight = 0;
@@ -351,6 +355,6 @@
 			Module.runApp("canvas", extra_params);
 		};
 	</script>
-  <script type="text/javascript" src="GameAnalytics.js"></script>
+  <script type="text/javascript" src="https://gitlab.com/skysthelimit.dev/selenite/-/tree/main/semag/monkeymart/GameAnalytics.js"></script>
  </body>
 </html>
