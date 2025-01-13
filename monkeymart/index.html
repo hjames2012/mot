@@ -318,19 +318,6 @@
 		EngineLoader.stream_wasm = "false" === "true";
 		EngineLoader.load("canvas", "MonkeyMart");
 	</script> 
-  <script type="text/javascript">
-		function poki_showBanner(vBanner) {
-			PokiSDK.displayAd(document.getElementById(vBanner), '320x50');
-		}
-
-		function poki_showBigBanner(vBanner) {
-			PokiSDK.displayAd(document.getElementById(vBanner), '728x90');
-		}
-
-		function poki_hideBanner(vBanner) {
-			PokiSDK.destroyAd(document.getElementById(vBanner));
-		}
-	</script>   
   <script id="poki-sdk-setup" type="text/javascript">
 		 PokiSDK.gameLoadingStart();
 		 var data = {};
