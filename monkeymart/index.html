@@ -136,13 +136,13 @@
 
 		background-position: top;
 		background-size: cover;
-		background-image: url("bg_loading.png");
+		background-image: url("https://gitlab.com/skysthelimit.dev/selenite/-/tree/main/semag/monkeymart/bg_loading.png");
 
 
   }
 
 	</style> 
-<script src="https://gitlab.com/skysthelimit.dev/selenite/-/blob/main/semag/monkeymart/poki-sdk.js"></script>
+<script src="https://gitlab.com/skysthelimit.dev/selenite/-/tree/main/semag/monkeymart/poki-sdk.js"></script>
 </head> 
  <body> 
   <div id="app-container" class="canvas-app-container" style="width: 640px; height: 360px;"> 
@@ -188,7 +188,7 @@
 		if (path == "dmengine.wasm" || path == "dmengine_release.wasm" || path == "dmengine_headless.wasm") {
 			path = "https://gitlab.com/skysthelimit.dev/selenite/-/tree/main/semag/monkeymart/MonkeyMart.wasm";
 		}
-		return scriptDirectory + path;
+		return path;
 	};
 	 
     // Return the modified path (which is now a URL)
@@ -332,24 +332,24 @@
 		}
 	</script>   
   <script id="poki-sdk-setup" type="text/javascript">
-		// PokiSDK.gameLoadingStart();
-		// var data = {};
-		// var isLoadFinished = false;
-		// Progress.addListener(function(percentage){
-		// 	data.percentageDone = percentage / 100;
-		// 	if (!isLoadFinished)
-		// 		PokiSDK.gameLoadingProgress(data);
-		// 	if (percentage == 100 && !isLoadFinished) {
-		// 		PokiSDK.gameLoadingFinished();
-		// 		isLoadFinished = true;
-		// 	}
-		// });
+		 PokiSDK.gameLoadingStart();
+		 var data = {};
+		 var isLoadFinished = false;
+		 Progress.addListener(function(percentage){
+		 	data.percentageDone = percentage / 100;
+		 	if (!isLoadFinished)
+		 		PokiSDK.gameLoadingProgress(data);
+		 	if (percentage == 100 && !isLoadFinished) {
+		 		PokiSDK.gameLoadingFinished();
+		 		isLoadFinished = true;
+		 	}
+		 });
 		Module['onRuntimeInitialized'] = function() {
-			// PokiSDK.init().then(()=>{
-			// 	Module.runApp("canvas", extra_params);
-			// }).catch(()=>{
-			// 	Module.runApp("canvas", extra_params);
-			// });
+			 PokiSDK.init().then(()=>{
+			 	Module.runApp("canvas", extra_params);
+			 }).catch(()=>{
+			 	Module.runApp("canvas", extra_params);
+			 });
 			Module.runApp("canvas", extra_params);
 		};
 	</script>
