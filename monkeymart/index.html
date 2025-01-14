@@ -181,6 +181,14 @@ Module['onRuntimeInitialized'] = function() {
     Module.runApp("canvas", extra_params);
 };
 
+// Define the Module object
+var Module = {
+    'INITIAL_MEMORY': extra_params.custom_heap_size,
+    'onRuntimeInitialized': function() {
+        Module.runApp("canvas", extra_params);
+    }
+};
+
 Module["locateFile"] = function(path, scriptDirectory) {
     // dmengine*.wasm is hardcoded in the built JS loader for WASM,
     // we need to replace it here with the correct project name.
