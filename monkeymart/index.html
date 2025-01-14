@@ -498,6 +498,15 @@ Progress.addListener(function(percentage) {
   console.log("Loading progress: " + percentage + "%");
 });
 
+// Define the EngineLoader object
+var EngineLoader = {
+    stream_wasm: false,
+
+    load: function(canvasId, gameName) {
+        console.log("Loading engine for game:", gameName, "on canvas:", canvasId);
+    }
+};
+
 // Load the engine
 EngineLoader.stream_wasm = "false" === "true";
 EngineLoader.load("canvas", "MonkeyMart");
