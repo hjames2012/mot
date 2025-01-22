@@ -1,4 +1,4 @@
-const rootPath = '/TemplateData/gif';
+const rootPath = '/trafficjam/TemplateData/gif';
 
 function UnityProgress(gameInstance, progress) {
     if (!gameInstance.Module) {
