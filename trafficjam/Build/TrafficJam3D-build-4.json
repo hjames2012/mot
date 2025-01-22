@@ -2,7 +2,7 @@
 {
 "companyName": "Traffic Jam 3D 17",
 "productName": "Traffic Jam 3D",
-"dataUrl": "TrafficJam3D-build-4.data.unityweb",
+"dataUrl": "https://thepizzaedition-games.com/gg/traffic-jam-3d/Build/TrafficJam3D-build-4.data.unityweb",
 "wasmCodeUrl": "TrafficJam3D-build-4.wasm.code.unityweb",
 "wasmFrameworkUrl": "TrafficJam3D-build-4.wasm.framework.unityweb",
 "TOTAL_MEMORY": 268435456,
