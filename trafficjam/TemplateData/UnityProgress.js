@@ -1,4 +1,4 @@
-const rootPath = '/TemplateData/gif/';
+const rootPath = '/TemplateData/gif';
 
 function UnityProgress(gameInstance, progress) {
     if (!gameInstance.Module) {
@@ -33,7 +33,7 @@ function UnityProgress(gameInstance, progress) {
 
     if(progress>= 0.9 && progress<1)
     {
-        gameInstance.textProgress.innerHTML = '100% - Running, Wait..' +' <img src="' + rootPath + '/gears.gif" class="spinner" />';
+        gameInstance.textProgress.innerHTML = '100% - Running, Wait..' +' <img src="'motknv.on-fleek.app/trafficjam' + rootPath + '/gears.gif" class="spinner" />';
         gameInstance.progress.style.display = 'none';
     }
     else
