@@ -29,11 +29,11 @@ function UnityProgress(gameInstance, progress) {
     gameInstance.progress.full.style.width = (100 * progress) + "%";
     gameInstance.progress.empty.style.width = (100 * (1 - progress)) + "%";
 
-    //gameInstance.textProgress.innerHTML = 'Loading - ' + Math.floor(progress * 100) + '%' + ' <img src="' + rootPath + '/gears.gif" class="spinner" />';
+    gameInstance.textProgress.innerHTML = 'Loading - ' + Math.floor(progress * 100) + '%' + ' <img src="' + rootPath + '/gears.gif" class="spinner" />';
 
     if(progress>= 0.9 && progress<1)
     {
-        gameInstance.textProgress.innerHTML = '100% - Running, Wait..' +' <img src="'motknv.on-fleek.app/trafficjam' + rootPath + '/gears.gif" class="spinner" />';
+        gameInstance.textProgress.innerHTML = '100% - Running, Wait..' +' <img src="' + rootPath + '/gears.gif" class="spinner" />';
         gameInstance.progress.style.display = 'none';
     }
     else
@@ -41,12 +41,10 @@ function UnityProgress(gameInstance, progress) {
         gameInstance.textProgress.innerHTML = 'Loading - ' + Math.floor(progress * 100) + '%' + ' <img src="' + rootPath + '/gears.gif" class="spinner" />';
     }
 
-    /*
     if (progress == 1) {
         gameInstance.textProgress.innerHTML = 'Running, Please Wait.. <img src="' + rootPath + '/gears.gif" class="spinner" />';
         gameInstance.progress.style.display = 'none';
     }
-    */
 
     if (progress == 'complete') {
         SendMessage = gameInstance.SendMessage;
@@ -137,7 +135,7 @@ window.Game = (function() {
 
     this.updateStyle(gameContainer, newStyle);
 
-    // canvas does not exists on page load
+    // canvas does not exist on page load
     if (canvas) {
       this.updateStyle(canvas, newStyle);
     }
