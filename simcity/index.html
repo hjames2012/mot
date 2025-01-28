@@ -30,6 +30,15 @@
             EJS_startOnLoaded = true;
             EJS_pathtodata = "https://motknv.on-fleek.app/emulatorjs/data/";
             EJS_gameUrl = "https://motknv.on-fleek.app/simcity/SimCity2000.zip";
+
+            // Initialize the emulator
+            EmulatorJS.init({
+                player: EJS_player,
+                core: EJS_core,
+                color: EJS_color,
+                startOnLoaded: EJS_startOnLoaded,
+                gameUrl: EJS_gameUrl // Pass the game URL directly
+            });
         </script>
         <script src="https://motknv.on-fleek.app/emulatorjs/data/loader.js"></script>
     </body>
