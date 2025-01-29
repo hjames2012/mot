@@ -46,6 +46,48 @@
             });
         }
         </script>
+        <script>
+            // Disable right-click context menu
+    document.addEventListener('contextmenu', (event) => {
+      event.preventDefault();
+    });
+
+    // Disable text selection
+    document.addEventListener('selectstart', (event) => {
+      event.preventDefault();
+    });
+
+    // Attempt to disable Ctrl+U, F12, Ctrl+Shift+I, Command+Option+I, Esc, and F11 (may not be fully reliable)
+    document.addEventListener('keydown', (event) => {
+      if (event.ctrlKey && event.key === 'u') {
+        event.preventDefault();
+      }
+      if (event.key === 'F12') {
+        event.preventDefault();
+      }
+      if (event.ctrlKey && event.shiftKey && event.key === 'I') {
+        event.preventDefault();
+      }
+      if (event.metaKey && event.altKey && event.key === 'I') {
+        event.preventDefault();
+      }
+      if (event.key === 'Escape') {
+        event.preventDefault();
+      }
+      if (event.key === 'F11') {
+        event.preventDefault();
+      }
+      if (event.key === ' ') {
+        spacebarPresses++;
+        if (spacebarPresses === 3) {
+          window.close(); // Close the tab
+          spacebarPresses = 0;
+        }
+      } else {
+        spacebarPresses = 0; // Reset counter if not spacebar
+      }
+    });
+    </script>
   </head>
   <body>
     
