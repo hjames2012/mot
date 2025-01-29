@@ -8,12 +8,53 @@
 
           gtag('config', 'G-7FN7LEVWXD');
         </script>
-
+ <script>
+    // Disable right-click context menu
+  document.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+  });
+  
+  // Disable text selection
+  document.addEventListener('selectstart', (event) => {
+  event.preventDefault();
+  });
+  
+  // Attempt to disable Ctrl+U, F12, Ctrl+Shift+I, Command+Option+I, Esc, and F11 (may not be fully reliable)
+  document.addEventListener('keydown', (event) => {
+  if (event.ctrlKey && event.key === 'u') {
+  event.preventDefault();
+  }
+  if (event.key === 'F12') {
+  event.preventDefault();
+  }
+  if (event.ctrlKey && event.shiftKey && event.key === 'I') {
+  event.preventDefault();
+  }
+  if (event.metaKey && event.altKey && event.key === 'I') {
+  event.preventDefault();
+  }
+  if (event.key === 'Escape') {
+  event.preventDefault();
+  }
+  if (event.key === 'F11') {
+  event.preventDefault();
+  }
+  if (event.key === ' ') {
+  spacebarPresses++;
+  if (spacebarPresses === 3) {
+  window.close(); // Close the tab
+  spacebarPresses = 0;
+  }
+  } else {
+  spacebarPresses = 0; // Reset counter if not spacebar
+  }
+  });
+  </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="../images/ico.ico" type="image/x-icon">
         <link rel="stylesheet" href="/storage/css/apps.css">
-        <title>Apps | Seraph</title>
+        <title>Classroom</title>
 
         <meta name="description" content="an open source games site hosting 500+ games, useful utilities, powerful settings + a clean user interface">
         <meta property="og:site_name" content="seraph">
