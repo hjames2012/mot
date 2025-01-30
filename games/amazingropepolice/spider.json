@@ -1,7 +1,7 @@
 {
 "companyName": "hgamesartspider",
 "productName": "Amazing Strange Rope Police - Vice Spider Vegas",
-"dataUrl": "spider.data.unityweb",
+"dataUrl": "https://github.com/hjames2012/mot/releases/download/mot/spider.data.unityweb",
 "asmCodeUrl": "spider.asm.code.unityweb",
 "asmMemoryUrl": "spider.asm.memory.unityweb",
 "asmFrameworkUrl": "spider.asm.framework.unityweb",
