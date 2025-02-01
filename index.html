@@ -56,6 +56,23 @@
       }
     });
     </script>
+    <style>
+      .sidebar-button {
+    background-color: #2a2a2a;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 12px 20px;
+    margin: 10px;
+    width: calc(100% - 20px);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar-button:hover {
+    background-color: #3a3a3a;
+}
+    </style>
  </head>
   <body>
     
@@ -106,6 +123,12 @@
             </div>
           </div>
       </div>
+
+      <div class="sidebar" id="draggableSidebar">
+        <button class="sidebar-button">Button 1</button>
+        <button class="sidebar-button">Button 2</button>
+        <button class="sidebar-button">Button 3</button>
+    </div>
 
       <script>
         if ('serviceWorker' in navigator) {
@@ -161,6 +184,42 @@
 
         type();
       </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const sidebar = document.getElementById('draggableSidebar');
+      let isDragging = false;
+      let currentY;
+      let initialY;
+      let yOffset = 0;
+
+      sidebar.addEventListener('mousedown', dragStart);
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('mouseup', dragEnd);
+
+      function dragStart(e) {
+          initialY = e.clientY - yOffset;
+          isDragging = true;
+      }
+
+      function drag(e) {
+          if (isDragging) {
+              e.preventDefault();
+              currentY = e.clientY - initialY;
+              yOffset = currentY;
+              setTranslate(currentY);
+          }
+      }
+
+      function dragEnd() {
+          isDragging = false;
+      }
+
+      function setTranslate(yPos) {
+          sidebar.style.transform = `translateY(${yPos}px)`;
+      }
+  });
+</script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
