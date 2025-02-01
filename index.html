@@ -89,6 +89,31 @@
     .sidebar-button:hover {
       background-color: #3a3a3a;
     }
+
+    h2 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 10px #00ff88,
+                 0 0 20px #00b7ff,
+                 0 0 30px darkblue,
+                 0 0 40px blue;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px #00ff00,
+                     0 0 40px #00ff00;
+    }
+    to {
+        text-shadow: 0 0 20px #fff,
+                     0 0 30px #4dff4d,
+                     0 0 40px #4dff4d,
+                     0 0 50px #4dff4d;
+    }
+
   </style>
 </head>
 
