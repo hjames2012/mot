@@ -117,6 +117,18 @@
                      0 0 50px #0026ff;
     }
   }
+
+  .sidebar-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+}
   </style>
 </head>
 
@@ -190,19 +202,19 @@
     <h2>Quicklinks</h2>
     <a href="https://classroom.google.com/">
       <button class="sidebar-button">
-        <img src="/image/classroom.png" />
+        <img src="/image/classroom.png" class="button-icon">
         <p>Google Classroom</p>
       </button>
     </a>
     <a href="https://drive.google.com/">
       <button class="sidebar-button">
-        <img src="/image/drive.jpg" />
+        <img src="/image/drive.jpg" class="button-icon">
         <p>Drive</p>
       </button>
   </a>
     <a href="chrome://new-tab-page">
       <button class="sidebar-button">
-        <img src="/image/newtab.png" />
+        <img src="/image/newtab.png" class="button-icon">
         <p>New tab</p>
       </button>
     </a>
