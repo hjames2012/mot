@@ -8,6 +8,6 @@ if (sessionStorage.getItem('loading')) {
     window.addEventListener('load', () => {
         setTimeout(() => {
             sessionStorage.removeItem('loading');
-        }, 7000);
+        }, 700);
     });
 }
