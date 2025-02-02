@@ -1,23 +1,15 @@
-function showPreloader() {
+document.addEventListener('readystatechange', (event) => {
     const preloader = document.querySelector('.preloader');
-    if (preloader) {
+    
+    if (event.target.readyState === 'interactive') {
         preloader.style.display = 'flex';
         preloader.classList.remove('fade-out');
     }
-}
-
-function hidePreloader() {
-    const preloader = document.querySelector('.preloader');
-    if (preloader) {
+    
+    if (event.target.readyState === 'complete') {
         preloader.classList.add('fade-out');
         setTimeout(() => {
             preloader.style.display = 'none';
         }, 7000);
     }
-}
-
-// Show preloader when starting to load
-window.addEventListener('beforeunload', showPreloader);
-
-// Hide preloader when everything is loaded
-window.addEventListener('load', hidePreloader);
+});
