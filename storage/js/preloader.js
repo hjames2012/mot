@@ -4,7 +4,6 @@ window.onbeforeunload = function() {
 
 if (sessionStorage.getItem('loading')) {
     const preloader = document.querySelector('.preloader');
-    preloader.style.display = 'flex';
     preloader.classList.remove('fade-out');
     
     window.addEventListener('load', () => {
