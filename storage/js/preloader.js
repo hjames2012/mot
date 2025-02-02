@@ -1,15 +1,17 @@
-document.addEventListener('readystatechange', (event) => {
+window.onbeforeunload = function() {
+    sessionStorage.setItem('loading', 'true');
+}
+
+if (sessionStorage.getItem('loading')) {
     const preloader = document.querySelector('.preloader');
+    preloader.style.display = 'flex';
+    preloader.classList.remove('fade-out');
     
-    if (event.target.readyState === 'interactive') {
-        preloader.style.display = 'flex';
-        preloader.classList.remove('fade-out');
-    }
-    
-    if (event.target.readyState === 'complete') {
+    window.addEventListener('load', () => {
         preloader.classList.add('fade-out');
         setTimeout(() => {
             preloader.style.display = 'none';
+            sessionStorage.removeItem('loading');
         }, 7000);
-    }
-});
+    });
+}
