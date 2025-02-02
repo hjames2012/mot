@@ -7,7 +7,6 @@ if (sessionStorage.getItem('loading')) {
     
     window.addEventListener('load', () => {
         setTimeout(() => {
-            preloader.style.display = 'none';
             sessionStorage.removeItem('loading');
         }, 7000);
     });
