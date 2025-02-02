@@ -1,13 +1,13 @@
 window.onbeforeunload = function() {
-    sessionStorage.setItem('loading', 'true');
+    sessionStorage.setItem('loader', 'true');
 }
 
-if (sessionStorage.getItem('loading')) {
+if (sessionStorage.getItem('loader')) {
     const preloader = document.querySelector('.preloader');
     
     window.addEventListener('load', () => {
         setTimeout(() => {
-            sessionStorage.removeItem('loading');
+            sessionStorage.removeItem('loader');
         }, 700);
     });
 }
