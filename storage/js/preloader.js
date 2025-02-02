@@ -6,7 +6,6 @@ if (sessionStorage.getItem('loading')) {
     const preloader = document.querySelector('.preloader');
     
     window.addEventListener('load', () => {
-        preloader.classList.add('fade-out');
         setTimeout(() => {
             preloader.style.display = 'none';
             sessionStorage.removeItem('loading');
