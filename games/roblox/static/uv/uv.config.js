@@ -1,4 +1,4 @@
-self.__uv$config = {
+self.  $config = {
     prefix: '/static/jmwsw/',
     bare: 'https://historicalfiction.vpn.net.br/bare/',
     encodeUrl: Ultraviolet.codec.xor.encode,
