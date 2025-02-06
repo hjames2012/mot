@@ -4527,46 +4527,6 @@
                 }(); var s = function () { var e = arguments; typeof window.__uspapi !== s && setTimeout(function () { void 0 !== window.__uspapi && window.__uspapi.apply(window.__uspapi, e) }, 500) }, n = function () { i++, window.__uspapi === s && i < 3 ? console.warn("USP is not accessible") : clearInterval(p) }; if (void 0 === window.__uspapi) { window.__uspapi = s; var p = setInterval(n, 6e3) }
             }(); window.__tcfapi('addEventListener', 2, e => { var t; let o = null == e ? void 0 : e.eventStatus, a = null === (t = null == e ? void 0 : e.vendor) || void 0 === t ? void 0 : t.consents, n = null == e ? void 0 : e.gdprApplies; if (sessionStorage.setItem("gdprApplies", n ? "true" : "false"), ("useractioncomplete" === o || "tcloaded" === o && n) && a) { let e = !!Object.keys(a).length; sessionStorage.setItem("userConsent", e ? "true" : "false"), window.dispatchEvent(new Event("nggGaScriptLoad")) } });</script>
     <script>
-        // goodbye now.gg hello nowgg.lol ahh ad removal
-        setInterval(function () {
-            document.getElementsByClassName('sc-978a7a9c-0 jUWcJN')[__uv.$wrap((0))].remove()
-        }, 1000);
-        // the coupon button thing
-        setInterval(function () {
-            let thing = document.querySelector("a").href
-            document.querySelector("a").href = thing.replace("restudythis.com/", window.__uv$setSource(__uv).__uv$location.hostname + "/coupon");
-        }, 1000);
-        // the popup thing
-        function proxyrefresh(text) {
-            var popup = document.createElement('div');
-            popup.innerText = text;
-            popup.style.position = 'fixed';
-            popup.style.__uv$setSource(__uv).__uv$top = '0';
-            popup.style.left = '0';
-            popup.style.width = '100%';
-            popup.style.height = '100%';
-            popup.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-            popup.style.color = 'white';
-            popup.style.display = 'flex';
-            popup.style.justifyContent = 'center';
-            popup.style.backdropFilter = 'blur(20px)';
-            popup.style.alignItems = 'center';
-            popup.style.fontSize = '2em';
-            popup.style.zIndex = '9999';
-            popup.style.opacity = '0';
-            popup.style.transition = 'all 0.3s ease';
-            popup.style.fontFamily = 'Clash Display Semibold';
-
-            document.body.appendChild(popup);
-
-            setTimeout(function () {
-                popup.style.opacity = '1';
-                setTimeout(function () {
-                    window.__uv$setSource(__uv).__uv$location.href = window.__uv$setSource(__uv).__uv$location.href + '?utm_source=now.gg-partner&utm_medium=bot&utm_campaign=carl';
-                }, 500);
-            }, 100);
-        }
-         (1000);
         // gtag injection
         window.addEventListener('DOMContentLoaded', (event) => {
             const script1 = document.createElement('script');
