@@ -1,5 +1,5 @@
-import { HistoryHelper } from "/assets/history_helper.js";
-import { SettingsManager } from "/assets/settings_manager.js";
+import { HistoryHelper } from "assets/history_helper.js";
+import { SettingsManager } from "assets/settings_manager.js";
 
 const searchInput = document.getElementById("__shadow-search-bar");
 const addTabButton = document.getElementById("add-tab");
@@ -8,10 +8,10 @@ class Tab {
   constructor() {
     this.activeTabIndex = -1;
     this.tabsArr = [];
-    this.brokenSites = fetch('/v1/api/broken-sites').then(res => res.json());
+    this.brokenSites = fetch('v1/api/broken-sites').then(res => res.json());
     this.history = new HistoryHelper();
     this.settings = new SettingsManager();
-    this.connection = new BareMux.BareMuxConnection("/baremux/worker.js");
+    this.connection = new BareMux.BareMuxConnection("baremux/worker.js");
     document.getElementById("uv-form").addEventListener("submit", (e) => {
       e.preventDefault();
       searchInput.blur();
@@ -47,7 +47,7 @@ class Tab {
     this.setDefaults();
     this.setTransport();
     this.init();
-    this.getSuggestions = async (query) => await fetch(`/v1/api/search-suggestions?query=${query}`, { headers: { engine: this.searchSuggestionsEngine } }).then(response => { return response.json() });
+    this.getSuggestions = async (query) => await fetch(`v1/api/search-suggestions?query=${query}`, { headers: { engine: this.searchSuggestionsEngine } }).then(response => { return response.json() });
     this.hideSuggestions = () => document.getElementById("suggestions").classList.add("hidden");
     this.getPrefix = () => {
       switch (this.backend) {
