@@ -471,15 +471,6 @@
     document.getElementById("__shadow-search-bar").addEventListener("focus", (e) => {
       e.target.select();
     });
-
-    document.getElementById("billigerhost").onclick = (e) => {
-      if (e.shiftKey) {
-        parent.createTab("https://billing.billigerhost.com");
-        setTimeout(updateOmni, 2500);
-      } else {
-        window.open("https://billing.billigerhost.com", "_blank");
-      }
-    };
   </script>
 </body>
 
