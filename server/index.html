@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Web Proxy</title>
+</head>
+<body>
+    <h1>Basic Web Proxy</h1>
+    <form id="proxyForm">
+        <input type="text" id="url" placeholder="Enter URL" required>
+        <button type="submit">Fetch</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+        document.getElementById('proxyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const url = document.getElementById('url').value;
+            fetch(`/proxy?url=${encodeURIComponent(url)}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('output').innerText = data;
+                })
+                .catch(error => {
+                    document.getElementById('output').innerText = 'Error: ' + error;
+                });
+        });
+    </script>
+</body>
+</html>
