@@ -1,5 +1,5 @@
 self.__uv$config = {
-    prefix: '/',
+    prefix: '/static/',
   bare: 'https://ultraviolet-node.tomp.app/', // Default Ultraviolet bare server
   encodeUrl: Ultraviolet.codec.xor.encode,
   decodeUrl: Ultraviolet.codec.xor.decode,
