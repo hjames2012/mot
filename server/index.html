@@ -87,14 +87,9 @@
             document.getElementById('proxyForm').addEventListener('submit', function (event) {
                 event.preventDefault();
                 const url = document.getElementById('url').value;
-                window.location.href = `#${encodeURIComponent(url)}`;
+                const proxyURL = __uv$config.prefix + __uv$config.encodeUrl(url);
+                window.open(proxyURL, '_blank');
             });
-
-            const url = window.location.hash.substring(1);
-            if (url) {
-                const proxyURL = __uv$config.prefix + __uv$config.encodeUrl(decodeURIComponent(url));
-                document.getElementById('proxyFrame').src = proxyURL;
-            }
         });
     </script>
 </head>
