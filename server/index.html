@@ -87,7 +87,7 @@
             document.getElementById('proxyForm').addEventListener('submit', function (event) {
                 event.preventDefault();
                 const url = document.getElementById('url').value;
-                const proxyURL = __uv$config.prefix + __uv$config.encodeUrl(url);
+                const proxyURL = __uv$config.prefix + url;
                 window.open(proxyURL, '_blank');
             });
         });
