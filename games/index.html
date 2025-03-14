@@ -8,7 +8,11 @@
 
           gtag('config', 'G-7FN7LEVWXD');
 
-            alert("The new url for all the games is motknv.on-fleek.app");
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.location.href.includes("origmot.on-fleek.app")) {
+                alert("You are playing on the emergency verion! the best version is at motknv.on-fleek.app");
+            }
+        });
         </script>
 
         <meta charset="UTF-8">
